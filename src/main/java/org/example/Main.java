@@ -6,13 +6,15 @@ public class Main {
     public static void main(String[] args) {
        /*Setup any variables you need and call your methods
        * here in the main method */
-    double stateTax = .04f;
-    double countyTax = .02f;
+    double stateTaxRate = .04f;
+    double countyTaxRate = .02f;
 
     double itemPrice = inputPurchasePrice ();
-    double totalTax = calculateTax (itemPrice, stateTax, countyTax);
-    double totalPrice = calculateTotal(itemPrice, totalTax);
-    displayTotals(stateTax, countyTax, itemPrice, totalTax, totalPrice );
+    double countyTax = calculateTax (itemPrice, countyTaxRate);
+    double stateTax = calculateTax(itemPrice, stateTaxRate);
+    double itemTax = calculateTotal(countyTax, stateTax);
+    double totalPrice = calculateTotal(itemPrice, itemTax);
+    displayTotals(stateTaxRate, countyTaxRate, itemPrice, itemTax, totalPrice );
     }
 
     public static double inputPurchasePrice() {
@@ -29,14 +31,13 @@ public class Main {
         }
 
 
-    public static double calculateTax(double num1, double num2, double num3) {
+    public static double calculateTax(double price, double tax) {
         /* Write a method called calculateTax that
          * accepts price and tax rate as parameters and
          * calculates and returns the tax
          * */
-        double tax = num2 + num3;
 
-        return num1 * tax;
+        return price * tax ;
     }
     public static double calculateTotal(double num1, double num2){
     /* Write a method called calculateTotal that
