@@ -1,9 +1,8 @@
 name: Java
 
 on:
+  pull_request:
   push:
-# Allow manual runs of workflow
-  workflow_dispatch:
 
 # Permissions required for test-reporter https://github.com/dorny/test-reporter
 permissions:
